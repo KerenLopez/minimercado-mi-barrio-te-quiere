@@ -3,20 +3,11 @@ package model;
 public class Person {
 	
 	private String typeOfId;
-	private int numId;
+	private String numId;
 	
-	public Person(int typeOfId, int numId) {
+	public Person(String typeOfId, String numId) {
 		this.numId = numId;
-		switch(typeOfId) {
-		case 1:
-			this.setTypeOfId("TI");
-		case 2:
-			this.setTypeOfId("CC");
-		case 3:
-			this.setTypeOfId("PP");
-		case 4:
-			this.setTypeOfId("CE");
-		}
+		this.typeOfId = typeOfId;
 	}
 
 	public String getTypeOfId() {
@@ -27,11 +18,11 @@ public class Person {
 		this.typeOfId = typeOfId;
 	}
 
-	public int getNumId() {
+	public String getNumId() {
 		return numId;
 	}
 
-	public void setNumId(int numId) {
+	public void setNumId(String numId) {
 		this.numId = numId;
-	}
+	}	
 }

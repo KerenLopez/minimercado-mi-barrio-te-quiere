@@ -1,7 +1,9 @@
 package ui;
 
+import java.time.LocalDate;
 import java.util.Scanner;
-
+import exceptions.NumberOfDocumentException;
+import exceptions.TypeOfDocumentException;
 import model.MiniMercadoMiBarrioTeQuiere;
 
 public class Main {
@@ -63,7 +65,8 @@ public class Main {
 	}
 	
 	public void registerPerson(){
-		int typeOfId = 0, numId = 0;
+		int typeOfId = 0;
+		String tpId = "", numId = "";
 		System.out.println(
 				"\n**********************************************************************************\n"+
 				"                         Registrar el ingreso de una persona"+
@@ -82,21 +85,37 @@ public class Main {
 			}
 		} while(typeOfId!=1 && typeOfId!=2 && typeOfId!=3 && typeOfId!=4);
 		
+		switch(typeOfId) {
+		case 1:
+			tpId = "TI";
+		case 2:
+			tpId = "CC";
+		case 3:
+			tpId = "PP";
+		case 4:
+			tpId = "CE";
+		}
+		
 		System.out.print("Digite el numero de documento de identidad que posee la persona a registrar: ");
-		numId = Integer.parseInt(lector.nextLine());
+		numId = lector.nextLine();
+		
+		int day = LocalDate.now().getDayOfMonth();
 		
 		try {
-			mainMinimercado.addPerson(typeOfId, numId);
-		}catch() {
-			
+			mainMinimercado.addPerson(tpId, numId, day);
+			 
+		}catch(TypeOfDocumentException tde) {
+			System.err.println(tde.getMessage());
+		}catch(NumberOfDocumentException nde) {
+			System.err.println(nde.getMessage());
 		}
 	}
 
 	public void displayNumOfPeople(){
-		String message = ""+mainMinimercado.showNumOfPeople();
+		String message = mainMinimercado.showNumOfPeople();
 		System.out.println(
 			"\n**********************************************************************************\n"+
-			"            Numero de personas que han intentado ingresar al minimercado"+
+			"            Numero de personas que intentaron ingresar al minimercado"+
 			"\n**********************************************************************************"
 		);
 		System.out.println(message);
