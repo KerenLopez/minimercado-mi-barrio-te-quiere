@@ -14,24 +14,27 @@ public class MiniMercadoMiBarrioTeQuiere {
 		numPeopleTriedToEnter = 0;
 	}
 	
-	public void addPerson(String typeOfId, String numId, int day) throws TypeOfDocumentException, NumberOfDocumentException{
+	public String addPerson(String typeOfId, String numId, int day) throws TypeOfDocumentException, NumberOfDocumentException{
+		String msg = "La persona puede ingresar al minimercado ya que cumple con las condiciones, el registro fue exitoso.";
 		setNumPeopleTriedToEnter(getNumPeopleTriedToEnter()+1);
-		int penultimate = 0;
-		boolean stop = true;
-		for(int k=0;k<numId.length() && stop;k++){
-			if(k==numId.length()-1) {
-				penultimate = numId.charAt(k);
-				stop = false;
-			} 				
-		}
-		if((penultimate%2==0 && day%2==0)||(penultimate%2!=0 && day%2!=0)) {
-			throw new NumberOfDocumentException(numId, day);
-		}
 		if(typeOfId.equals("TI")) {
 			throw new TypeOfDocumentException(typeOfId);
 		}
+		char number = 0;
+		boolean stop = true;
+		for(int k=0;k<numId.length() && stop;k++){
+			if(k==numId.length()-2) {
+				number = numId.charAt(k);
+				stop = false;
+			} 				
+		}
+		int penultimate = Character.getNumericValue(number);
+		if((penultimate%2==0 && day%2==0)||(penultimate%2!=0 && day%2!=0)) {
+			throw new NumberOfDocumentException(penultimate, day);
+		}
 		Person p = new Person(typeOfId, numId);
 		people.add(p);
+		return msg;
 	}
 	
 	public String showNumOfPeople() {
