@@ -14,8 +14,8 @@ public class MiniMercadoMiBarrioTeQuiere {
 		numPeopleTriedToEnter = 0;
 	}
 	
-	public String addPerson(String typeOfId, String numId, int day) throws TypeOfDocumentException, NumberOfDocumentException{
-		String msg = "La persona puede ingresar al minimercado ya que cumple con las condiciones, el registro fue exitoso.";
+	public boolean registerPerson(String typeOfId, String numId, int day) throws TypeOfDocumentException, NumberOfDocumentException{
+		boolean added = false;
 		setNumPeopleTriedToEnter(getNumPeopleTriedToEnter()+1);
 		if(typeOfId.equals("TI")) {
 			throw new TypeOfDocumentException(typeOfId);
@@ -32,9 +32,14 @@ public class MiniMercadoMiBarrioTeQuiere {
 		if((penultimate%2==0 && day%2==0)||(penultimate%2!=0 && day%2!=0)) {
 			throw new NumberOfDocumentException(penultimate, day);
 		}
+		addPerson(typeOfId, numId);
+		added = true;
+		return added;
+	}
+	
+	public void addPerson(String typeOfId, String numId) {
 		Person p = new Person(typeOfId, numId);
 		people.add(p);
-		return msg;
 	}
 	
 	public String showNumOfPeople() {

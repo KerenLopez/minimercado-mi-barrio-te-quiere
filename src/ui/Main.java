@@ -48,7 +48,7 @@ public class Main {
 					option = Integer.parseInt(lector.nextLine());
 					switch(option){
 						case 1:
-							registerPerson();
+							addPerson();
 							menu = false;
 							pass = false;
 							break;
@@ -76,7 +76,7 @@ public class Main {
 		return option;
 	}
 	
-	public void registerPerson(){
+	public void addPerson(){
 		int typeOfId = 0;
 		String tpId = "", numId = "";
 		System.out.println(
@@ -117,8 +117,11 @@ public class Main {
 		int day = LocalDate.now().getDayOfMonth();
 		
 		try {
-			String message = mainMinimercado.addPerson(tpId, numId, day);
-			 System.out.println(message);
+			boolean added = mainMinimercado.registerPerson(tpId, numId, day);
+			if(added==true) {
+				String msg = "La persona puede ingresar al minimercado ya que cumple con las condiciones, el registro fue exitoso.";
+				System.out.println(msg);
+			}
 		}catch(TypeOfDocumentException tde) {
 			System.err.println(tde.getMessage());
 		}catch(NumberOfDocumentException nde) {
