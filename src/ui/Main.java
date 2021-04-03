@@ -11,12 +11,10 @@ public class Main {
 	public Scanner lector;
 	private MiniMercadoMiBarrioTeQuiere mainMinimercado;
 
-	//Builder Method
 	public Main(){
 		lector = new Scanner(System.in);
 		mainMinimercado = new MiniMercadoMiBarrioTeQuiere();
 	}
-	//End Builder	
 
 	public static void main(String[] args){
 		System.out.println(

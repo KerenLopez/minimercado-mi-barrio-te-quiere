@@ -7,10 +7,15 @@ public class TypeOfDocumentException extends Exception{
 	
 	public TypeOfDocumentException(String tpId) {
 		super("Error: el tipo de documento de identidad requerido para ingresar no puede ser Tarjeta de Identidad. Usted escogio la opcion "+tpId+".");
-		typeId = tpId;
+		setTypeId(tpId);
 	}
-	
-	public String getTypeOfId() {
+
+	public String getTypeId() {
 		return typeId;
 	}
+
+	public void setTypeId(String typeId) {
+		this.typeId = typeId;
+	}
+	
 }
