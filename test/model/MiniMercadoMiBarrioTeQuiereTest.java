@@ -37,6 +37,7 @@ public class MiniMercadoMiBarrioTeQuiereTest {
 			added = minimercado.registerPerson(typeOfId, numId, day);
 		}catch(TypeOfDocumentException tde){
 			added = false;
+			fail("Se esperaba la excepcion relacionada con el penultimo numero del documento");
 		}catch(NumberOfDocumentException nde){
 			added = false;
 		}
@@ -63,6 +64,7 @@ public class MiniMercadoMiBarrioTeQuiereTest {
 			added = minimercado.registerPerson(typeOfId, numId, day);
 		}catch(TypeOfDocumentException tde){
 			added = false;
+			fail("Se esperaba la excepcion relacionada con el penultimo numero del documento");
 		}catch(NumberOfDocumentException nde){
 			added = false;
 		}
@@ -89,6 +91,7 @@ public class MiniMercadoMiBarrioTeQuiereTest {
 			added = minimercado.registerPerson(typeOfId, numId, day);
 		}catch(TypeOfDocumentException tde){
 			added = false;
+			fail("Se esperaba la excepcion relacionada con el penultimo numero del documento");
 		}catch(NumberOfDocumentException nde){
 			added = false;
 		}
@@ -115,6 +118,7 @@ public class MiniMercadoMiBarrioTeQuiereTest {
 			added = minimercado.registerPerson(typeOfId, numId, day);
 		}catch(TypeOfDocumentException tde){
 			added = false;
+			fail("Se esperaba la excepcion relacionada con el penultimo numero del documento");
 		}catch(NumberOfDocumentException nde){
 			added = false;
 		}
@@ -139,10 +143,12 @@ public class MiniMercadoMiBarrioTeQuiereTest {
 		boolean added = false;
 		try {
 			added = minimercado.registerPerson(typeOfId, numId, day);
+			fail("Se esperaba la excepcion relacionada con tipo de documento");
 		}catch(TypeOfDocumentException tde){
 			added = false;
 		}catch(NumberOfDocumentException nde){
 			added = false;
+			fail("Se esperaba la excepcion relacionada con tipo de documento");
 		}
 		assertFalse(added);
 		assertEquals(1,minimercado.getNumPeopleTriedToEnter());
@@ -157,10 +163,12 @@ public class MiniMercadoMiBarrioTeQuiereTest {
 		boolean added = false;
 		try {
 			added = minimercado.registerPerson(typeOfId, numId, day);
+			fail("Se esperaba la excepcion relacionada con tipo de documento");
 		}catch(TypeOfDocumentException tde){
 			added = false;
 		}catch(NumberOfDocumentException nde){
 			added = false;
+			fail("Se esperaba la excepcion relacionada con tipo de documento");
 		}
 		assertFalse(added);
 		assertEquals(5,minimercado.getNumPeopleTriedToEnter());

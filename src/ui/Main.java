@@ -121,9 +121,9 @@ public class Main {
 				System.out.println(msg);
 			}
 		}catch(TypeOfDocumentException tde) {
-			System.err.println(tde.getMessage());
+			tde.printStackTrace();
 		}catch(NumberOfDocumentException nde) {
-			System.err.println(nde.getMessage());
+			nde.printStackTrace();
 		}
 	}
 
